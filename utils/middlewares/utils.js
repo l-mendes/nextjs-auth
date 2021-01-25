@@ -25,7 +25,7 @@ export function verifyToken(jwtToken) {
  * @return {object} object of parse jwt cookie decode object
  */
 export function getAppCookies(req) {
-  const parsedItems = {};
+  const parsedItems = { token: ''};
   if (req?.headers.cookie) {
     const cookiesItems = req.headers.cookie.split('; ');
     cookiesItems.forEach(cookies => {

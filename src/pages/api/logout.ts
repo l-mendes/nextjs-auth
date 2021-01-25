@@ -10,11 +10,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if(!token) {
       res.status(401).json({success: false, message: "Not Allowed"});
+      res.end();
     }
 
     if (method !== 'POST') {
       res.setHeader('Allow', ['POST']);
       res.status(405).json({success: false, message: `Method ${method} Not Allowed`});
+      res.end();
     }
 
     res.setHeader('Set-Cookie', cookie.serialize('token', token, {

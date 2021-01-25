@@ -44,7 +44,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     };
 
     if (validation) {
-      const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      const secret  = process.env.JWT_SECRET || '';
+      const token = jwt.sign(payload, secret, {
         expiresIn: "7d"
       });
 
